@@ -18,26 +18,23 @@
         
         <h1 class="text-center">Simple Weather App</h1>
 
-        <section class="weather-form">
-            <form>
-                <div class="text-center">
-                    <!-- <img class="mb-4" src="assets/thermometer-snow.svg" alt="" width="72" height="57"> -->
-                    <!-- <img class="mb-4" src="assets/brightness-high.svg" alt="" width="72" height="57"> -->
-                    <!-- <img class="mb-4" src="assets/cloud-drizzle.svg" alt="" width="72" height="57"> -->
-                    <img class="mb-4" src="assets/cloud-lightning-rain.svg" alt="" width="72" height="57">
-                    <img class="mb-4" src="assets/cloud-moon.svg" alt="" width="72" height="57">
-                    <img class="mb-4" src="assets/cloud-sun.svg" alt="" width="72" height="57">
-                </div>
-            
+        <section class="weather">
+            <div class="text-center">
+                <img class="mb-4" src="assets/cloud-lightning-rain.svg" alt="" width="72" height="57">
+                <img class="mb-4" src="assets/cloud-moon.svg" alt="" width="72" height="57">
+                <img class="mb-4" src="assets/cloud-sun.svg" alt="" width="72" height="57">
+            </div>
+
+            <form>            
                 <div class="form-floating">
-                  <input type="text" class="form-control" placeholder="Search for a city..." autofocus>
+                  <input id="city" type="text" class="form-control" placeholder="Search for a city..." autofocus>
                   <label>Search for a city...</label>
                 </div>
+
                 <br>
+
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-                
                 <span class="msg"></span>
-    
             </form>
         </section>
     
