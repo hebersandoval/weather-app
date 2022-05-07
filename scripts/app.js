@@ -1,3 +1,3 @@
 console.log('Weather App');
 
-console.log(getAPIKey())
+// console.log(getAPIKey())
