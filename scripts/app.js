@@ -3,6 +3,7 @@ console.log('Weather App');
 const form = document.querySelector('.weather form');
 const input = document.querySelector('#city');
 const msg = document.querySelector('.msg');
+const list = document.querySelector('.ajax-section .cities');
 
 form.addEventListener('submit', event => {
     event.preventDefault();
@@ -15,7 +16,36 @@ form.addEventListener('submit', event => {
         .then(response => response.json())
         .then(data => {
             // Manipulate the data here
-            console.log(data);
+            console.log(data.main);
+            const  { main, name, sys, weather } = data;
+            // const main = data.main;
+            // const name = data.name;
+            // const sys = data.sys;
+            // const weather = data.weather;
+            // Get icon from the weather property of the data returned
+            const icon = `https://openweathermap.org/img/wn/${weather[0]['icon']}@2x.png`;
+
+            const li = document.createElement('li');
+            li.classList.add('city');
+            
+            // Create markup for city weather listing
+            const markup = `
+                <h2 class="city-name" data-name="${name}, ${sys.country}">
+                    <span>${name}</span>
+                    <sup>${sys.country}</sup>
+                </h2>
+                <div class="city-temp">
+                    ${Math.round(main.temp)}<sup>°F</sup>
+                </div>
+                <figure>
+                    <img class="city-icon" src="${icon} alt=${weather[0]['main']}>
+                    <figcaption>${weather[0]['description']}</figcaption>
+                </figure>
+            `;
+
+            // Insert the content of markup into the <li> tag and append it to <ul>
+            li.innerHTML = markup;
+            list.appendChild(li);
         })
         .catch(() => {
             msg.textContent = 'Please search for a valid city 😩 😔 🤨';
