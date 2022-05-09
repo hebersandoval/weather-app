@@ -54,24 +54,28 @@ form.addEventListener('submit', event => {
             // Manipulate the data here
             const  { main, name, sys, weather } = data;
             // Get icon from the weather property of the data returned
-            const icon = `https://openweathermap.org/img/wn/${weather[0]['icon']}@2x.png`;
+            // const icon = `https://openweathermap.org/img/wn/${weather[0]['icon']}@2x.png`;
+
+            const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg`;
 
             const li = document.createElement('li');
             li.classList.add('city');
             
             // Create markup for city weather listing
             const markup = `
-                <h2 class="city-name" data-name="${name}, ${sys.country}">
-                    <span>${name}</span>
-                    <sup>${sys.country}</sup>
-                </h2>
-                <div class="city-temp">
-                    ${Math.round(main.temp)}<sup>°F</sup>
-                </div>
-                <figure>
-                    <img class="city-icon" src="${icon} alt=${weather[0]['main']}>
-                    <figcaption>${weather[0]['description']}</figcaption>
-                </figure>
+                <div class="card">
+                    <h2 class="city-name" data-name="${name}, ${sys.country}">
+                        <span>${name}</span>
+                        <sup>${sys.country}</sup>
+                    </h2>
+                    <div class="city-temp">
+                        ${Math.round(main.temp)}<sup>°F</sup>
+                    </div>
+                    <figure>
+                        <img class="city-icon" src="${icon} alt=${weather[0]['main']}>
+                        <figcaption>${weather[0]['description']}</figcaption>
+                    </figure>
+                <div>
             `;
 
             // Insert the content of markup into the <li> tag and append it to <ul>
