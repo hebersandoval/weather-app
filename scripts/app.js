@@ -16,12 +16,7 @@ form.addEventListener('submit', event => {
         .then(response => response.json())
         .then(data => {
             // Manipulate the data here
-            console.log(data.main);
             const  { main, name, sys, weather } = data;
-            // const main = data.main;
-            // const name = data.name;
-            // const sys = data.sys;
-            // const weather = data.weather;
             // Get icon from the weather property of the data returned
             const icon = `https://openweathermap.org/img/wn/${weather[0]['icon']}@2x.png`;
 
@@ -50,4 +45,8 @@ form.addEventListener('submit', event => {
         .catch(() => {
             msg.textContent = 'Please search for a valid city 😩 😔 🤨';
         });
+
+    msg.textContent = '';
+    form.request();
+    input.focus();
 });
