@@ -83,6 +83,6 @@ form.addEventListener('submit', event => {
         });
 
     msg.textContent = '';
-    form.request();
+    form.reset();
     input.focus();
 });
