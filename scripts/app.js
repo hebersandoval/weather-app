@@ -4,14 +4,50 @@ const form = document.querySelector('#weather-form');
 const input = document.querySelector('#city');
 const msg = document.querySelector('.msg');
 const list = document.querySelector('.weather-data .cities');
+const apiKey = getAPIKey();
 
 form.addEventListener('submit', event => {
     event.preventDefault();
     
-    const apiKey = getAPIKey();
     const inputValue = input.value
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${apiKey}&units=imperial`;
     
+    // Check value of city
+    const listItems = list.querySelectorAll('.weather-data .city')
+    const listItemsArray = Array.from(listItems);
+
+    if (listItemsArray.length > 0) {
+        const filteredArray = listItemsArray.filter(element => {
+            let content = '';
+            // If input value has a ',' in 2nd element -> ex: Chicago, IL
+            if (inputValue.includes(',')) {
+                // If country code has more the 2 letters, is invalid and keep the 1st part (city name)
+                if (inputValue.split(',')[1].length > 2) {
+                    // City name
+                    inputValue = inputValue.split(',')[0];
+                    content = element.querySelector('.city-name span').textContent.toLowerCase();
+                } else {
+                    // It only as one value
+                    content = element.querySelector('.city-name').dataset.name.toLowerCase();
+                }
+            } else {
+                // If it has no ',' just the city name
+                content = element.querySelector('.city-name span').textContent.toLowerCase();
+            }
+            return content == inputValue.toLowerCase();
+        });
+
+        if (filteredArray.length > 0) {
+            msg.textContent = `You already know the weather 
+            for ${filteredArray[0].querySelector('.city-name span').textContent}
+            ...otherwise be more specific by prodiving the country code as well 🤨.
+            `;
+            form.reset();
+            input.focus();
+            return;
+        }
+    }
+
    fetch(url)
         .then(response => response.json())
         .then(data => {
