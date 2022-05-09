@@ -12,36 +12,45 @@
     
     <link rel="stylesheet" href="css/styles.css">
     <title>Weather App</title>
+    <style>
+        body {
+            background-color: #f1dbdb;
+        }
+    </style>
 </head>
 <body>
-    <main class="container">
-        
-        <h1 class="text-center">Simple Weather App</h1>
+    <main class="container text-center">
+        <div>
+            <img class="mb-4" src="assets/cloud-lightning-rain.svg" alt="" width="72" height="57">
+            <img class="mb-4" src="assets/cloud-moon.svg" alt="" width="72" height="57">
+            <img class="mb-4" src="assets/cloud-sun.svg" alt="" width="72" height="57">
+        </div>
 
-        <section class="weather">
-            <div class="text-center">
-                <img class="mb-4" src="assets/cloud-lightning-rain.svg" alt="" width="72" height="57">
-                <img class="mb-4" src="assets/cloud-moon.svg" alt="" width="72" height="57">
-                <img class="mb-4" src="assets/cloud-sun.svg" alt="" width="72" height="57">
-            </div>
+        <section class="row">
+            <h3>Search your Weather</h3>
 
-            <form>            
-                <div class="form-floating">
-                  <input id="city" type="text" class="form-control" placeholder="Search for a city..." autofocus>
-                  <label>Search for a city...</label>
-                </div>
-                <br>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+            <form id="weather-form">            
+                <input id="city" type="text" placeholder="Search for a city..." autofocus>
+                <br><br>
+                <button type="submit">Submit</button>
                 <br><br>
                 <span class="msg"></span>
             </form>
         </section>
-    
+
         <section class="row">
-                <div class="ajax-section">
+            <!-- Weather data here -->
+            <div class="col-6">col-6
+                <div class="weather-data">
                     <ul class="cities"></ul>
                 </div>
+            </div>
+            <div class="col-6">col-6</div>
         </section>
+
+        <footer class="row">
+            <small>Made with <span>❤</span> by <a href="#" target="_blank">Heber Sandoval</a>
+        </footer>
     </main>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

@@ -1,9 +1,9 @@
 console.log('Weather App');
 
-const form = document.querySelector('.weather form');
+const form = document.querySelector('#weather-form');
 const input = document.querySelector('#city');
 const msg = document.querySelector('.msg');
-const list = document.querySelector('.ajax-section .cities');
+const list = document.querySelector('.weather-data .cities');
 
 form.addEventListener('submit', event => {
     event.preventDefault();
