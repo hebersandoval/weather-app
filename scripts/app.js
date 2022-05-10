@@ -55,9 +55,9 @@ form.addEventListener('submit', event => {
             const  { main, name, sys, weather } = data;
             // Get icon from the weather property of the data returned
             // const icon = `https://openweathermap.org/img/wn/${weather[0]['icon']}@2x.png`;
-
-            const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg`;
-
+            // const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg`;
+            const icon = `https://weatherpuppy.netlify.app/icons/${weather[0]["icon"]}.png`;
+            
             const li = document.createElement('li');
             li.classList.add('city');
             
@@ -72,7 +72,7 @@ form.addEventListener('submit', event => {
                         ${Math.round(main.temp)}<sup>°F</sup>
                     </div>
                     <figure>
-                        <img class="city-icon" src="${icon} alt=${weather[0]['main']}>
+                        <img class="city-icon" src="${icon}" alt="${weather[0]['main']}">
                         <figcaption>${weather[0]['description']}</figcaption>
                     </figure>
                 <div>
