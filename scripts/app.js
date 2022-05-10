@@ -1,7 +1,7 @@
 console.log('Weather App');
 
 const form = document.querySelector('#weather-form');
-const input = document.querySelector('#city');
+let input = document.querySelector('#city');
 const msg = document.querySelector('.msg');
 const list = document.querySelector('.weather-data .cities');
 const apiKey = getAPIKey();
